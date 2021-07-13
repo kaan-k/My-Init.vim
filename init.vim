@@ -1,5 +1,4 @@
 
-
 set guicursor=
 set nu
 set relativenumber
@@ -22,31 +21,54 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'Shougo/deoplete.nvim'
+"Plug 'zchee/deoplete-jedi'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sbdchd/neoformat'
-Plug 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'
 Plug 'neomake/neomake'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tmhedberg/SimpylFold'
+Plug 'sheerun/vim-polyglot'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'sainnhe/sonokai'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 syntax enable
 set background=dark
 set t_Co=16
-
-
+set noshowmode
 set termguicolors
-let g:tokyonight_style = 'night' " available: night, storm
-let g:tokyonight_enable_italic = 1
+"let g:tokyonight_style = 'night' " available: night, storm
+"let g:tokyonight_enable_italic = 1
 
-let g:airline_theme='bubblegum'
+let g:sonokai_style = 'atlantis'
+let g:sonokai_enable_italic = 1
+let g:sonokai_disable_italic_comment = 0
 
-colorscheme tokyonight
+colorscheme sonokai
+
+"Lightline section
+let g:lightline = {
+      \ 'colorscheme': 'sonokai',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified', 'testtest' ] ]
+      \ },
+      \ 'component': {
+      \   'testtest': '🦍 kaan-k | Git '
+      \ },
+      \ }
+
+let g:lightline.colorscheme = 'sonokai'
+
+"let g:airline_theme='sonokai'
+set t_Co=256
 let mapleader = " "
 
 hi HighlightedyankRegion cterm=reverse gui=reverse
@@ -93,7 +115,13 @@ map <leader>vv :Ranger<CR>
 
 map <leader>vr :CocRestart<CR>
 
+"To run python scripts
 map <leader>rr :w !python<CR>
+
+
+"Fzf keybinds
+map <leader>cx :Files<CR>
+
 
 let g:deoplete#enable_at_startup = 1
 
