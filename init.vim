@@ -12,7 +12,6 @@ set signcolumn=yes
 
 filetype indent plugin on
 syntax enable
-
 call plug#begin()
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'ghifarit53/tokyonight-vim'
@@ -21,7 +20,7 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Shougo/deoplete.nvim'
+"Plug 'Shougo/deoplete.nvim'
 "Plug 'zchee/deoplete-jedi'
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
@@ -116,8 +115,9 @@ map <leader>vv :Ranger<CR>
 map <leader>vr :CocRestart<CR>
 
 "To run python scripts
-map <leader>rr :w !python<CR>
-
+map <leader> :w !python<CR>
+"To run c scripts
+map <leader>rr :w !gcc -o somename % && ./somename<CR>
 
 "Fzf keybinds
 map <leader>cx :Files<CR>
