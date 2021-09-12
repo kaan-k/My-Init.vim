@@ -1,5 +1,5 @@
 # My-Init.vim
-## Installation
+## Installing Dependencies
 
 My init.vim requires [Node.js](https://nodejs.org/) v10+ to run.
 
@@ -13,6 +13,10 @@ cd nodejs-git
 ```
 ```sh
 makepkg -si
+```
+- Install npm
+```sh
+sudo pacman -S npm
 ```
 
 Install Vim-Plug
