@@ -18,6 +18,14 @@ makepkg -si
 ```sh
 sudo pacman -S npm
 ```
+- Install Mono
+```sh
+sudo pacman -S mono
+```
+- Install .NET
+```sh
+sudo pacman -S dotnet-runtime
+```
 
 Install Vim-Plug
 
