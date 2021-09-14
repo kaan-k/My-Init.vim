@@ -22,6 +22,10 @@ sudo pacman -S npm
 ```sh
 sudo pacman -S mono
 ```
+- After installing mono, you might have to copy paste this line to your terminal.
+```sh
+export FrameworkPathOverride=/usr/lib/mono/4.5/
+```
 - Install .NET
 ```sh
 sudo pacman -S dotnet-runtime
