@@ -36,6 +36,23 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sainnhe/sonokai'
 Plug 'itchyny/lightline.vim'
+
+
+
+"Web Stuff
+Plug 'mattn/emmet-vim'
+Plug 'Yggdroot/indentLine'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'tpope/vim-commentary'
+Plug 'dense-analysis/ale'
+
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'branch': 'release/0.x'
+  \ }
+"Live server
+Plug 'turbio/bracey.vim'
 call plug#end()
 
 syntax enable
@@ -45,7 +62,7 @@ set noshowmode
 set termguicolors
 "let g:tokyonight_style = 'night' " available: night, storm
 "let g:tokyonight_enable_italic = 1
-
+set expandtab
 let g:sonokai_style = 'atlantis'
 let g:sonokai_enable_italic = 1
 let g:sonokai_disable_italic_comment = 0
@@ -65,6 +82,15 @@ let g:lightline = {
       \ }
 
 let g:lightline.colorscheme = 'sonokai'
+
+
+
+
+
+"coc for web development
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+
+
 
 "let g:airline_theme='sonokai'
 set t_Co=256
@@ -122,8 +148,21 @@ map <leader>rr :w !gcc -o somename % && ./somename<CR>
 "Fzf keybinds
 map <leader>cx :Files<CR>
 
-
+nnoremap <leader>sr :FZF<CR>
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit'
+  \}
+"Notes:
+"1- Navigate between splits with Ctrl+WW
 let g:deoplete#enable_at_startup = 1
+
+
+
+"Indent
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
 
 
 if has('patch-8.1.1880')
@@ -187,3 +226,9 @@ let g:OmniSharp_server_use_mono = 1
 
 " Enable snippet completion, using the ultisnips plugin
 " let g:OmniSharp_want_snippet=1
+"set conceallevel=1
+"let g:indentLine_conceallevel=1
+"let g:indentLine_color_term = 239
+"let g:indentLine_char = 'c'
+
+
