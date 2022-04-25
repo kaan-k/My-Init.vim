@@ -27,7 +27,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sbdchd/neoformat'
-"Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 Plug 'neomake/neomake'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tmhedberg/SimpylFold'
@@ -46,6 +46,9 @@ Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'tpope/vim-commentary'
 Plug 'dense-analysis/ale'
+Plug 'alvan/vim-closetag'
+Plug 'tpope/vim-surround'
+
 
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
@@ -67,7 +70,9 @@ let g:sonokai_style = 'atlantis'
 let g:sonokai_enable_italic = 1
 let g:sonokai_disable_italic_comment = 0
 
-colorscheme sonokai
+colorscheme bogster
+hi Normal guibg=NONE ctermbg=NONE
+
 
 "Lightline section
 let g:lightline = {
@@ -88,7 +93,7 @@ let g:lightline.colorscheme = 'sonokai'
 
 
 "coc for web development
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pairs']
 
 
 
@@ -121,6 +126,51 @@ let g:jedi#completions_enabled = 0
 let g:jedi#use_splits_not_buffers = "right"
 
 
+"Close Tag Stuff
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+"
+let g:closetag_filetypes = 'html,xhtml,phtml'
+
+" filetypes like xml, xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+" integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+"
+let g:closetag_emptyTags_caseSensitive = 1
+
+" dict
+" Disables auto-close if not in a "valid" region (based on filetype)
+"
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ 'typescriptreact': 'jsxRegion,tsxRegion',
+    \ 'javascriptreact': 'jsxRegion',
+    \ }
+
+" Shortcut for closing tags, default is '>'
+"
+let g:closetag_shortcut = '>'
+
+" Add > at current position without closing the current tag, default is ''
+"
+let g:closetag_close_shortcut = '<leader>>'
+
+
 
 fun! TrimWhitespace()
 	let l:save = winsaveview()
@@ -141,7 +191,7 @@ map <leader>vv :Ranger<CR>
 map <leader>vr :CocRestart<CR>
 
 "To run python scripts
-map <leader> :w !python<CR>
+map <leader>py :w !python<CR>
 "To run c scripts
 map <leader>rr :w !gcc -o somename % && ./somename<CR>
 
