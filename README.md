@@ -43,6 +43,5 @@ Install the coc extensions and you are good to go.
 
 ## License
 
-What Lisence, LOL!
+Nothing to see here.
 
-**Free Software, Hell Yeah!**
