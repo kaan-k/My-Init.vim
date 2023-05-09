@@ -31,7 +31,7 @@ export FrameworkPathOverride=/usr/lib/mono/4.5/
 sudo pacman -S dotnet-runtime
 ```
 
-Install Vim-Plug
+- Install Vim-Plug
 
 ```sh
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
